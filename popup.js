@@ -1,37 +1,29 @@
+  console.log('ready');
+  const button = document.getElementById('add-button')
+  const clearButton = document.getElementById('clear-button')
+
+  // allow user to clear events
+  clearButton.addEventListener('click', function () {
+    chrome.storage.sync.clear(() => console.log('cleared events'))  ;
+  })
+  // when button is clicked, run content script
+  button.addEventListener('click', function () {
+    console.log('clicked');
+
+    chrome.storage.sync.get('yelpObjs', (response) => {
+      console.log(response);
+    })
+
+    // run content.js and add a card to chrome.storage.sync
+    // requests yelpObjs array 
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function (response) {
+        console.log(response.yelpObjs);
+        // create card for each object in yelpObjs
+
+
+      });
+    });
+
+  })
   
-  
-   var auth = {
-        consumerKey : "inoyHUZDgwjq9BTf60euqg",
-        consumerSecret : "qsMR1FHX-MpZ6BkycKnFULRT5OQ",
-        accessToken : "62swyNDNQ98MHlm9IhijlXR98NYpAWqm",
-        // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
-        // You wouldn't actually want to expose your access token secret like this in a real application.
-        accessTokenSecret : "tXvgJEJFlU-oxTsFRB2NE_TJ2wk",
-        serviceProvider : {
-          signatureMethod : "HMAC-SHA1"
-        }
-      };
-      var terms = 'food';
-      var near = 'San+Francisco';
-      var accessor = {
-        consumerSecret : auth.consumerSecret,
-        tokenSecret : auth.accessTokenSecret
-      };
-      parameters = [];
-      parameters.push(['term', terms]);
-      parameters.push(['location', near]);
-      parameters.push(['callback', 'cb']);
-      parameters.push(['oauth_consumer_key', auth.consumerKey]);
-      parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
-      parameters.push(['oauth_token', auth.accessToken]);
-      parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
-      var message = {
-        'action' : 'http://api.yelp.com/v2/search',
-        'method' : 'GET',
-        'parameters' : parameters
-      };
-      OAuth.setTimestampAndNonce(message);
-      OAuth.SignatureMethod.sign(message, accessor);
-      var parameterMap = OAuth.getParameterMap(message.parameters);
-      parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
-      console.log(parameterMap);
