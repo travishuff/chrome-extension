@@ -11,7 +11,7 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["*://*.yelp.com/*"],
+			"matches": ["*://*.yelp.com/biz*"],
 			"js": ["jquery-3.1.1.min.js", "content.js"]
 		}
 	],
@@ -19,5 +19,6 @@
 			"default_icon": "icon.png",
 			"default_title": "Chrome Extension Title",
 			"default_popup": "popup.html"
-		}
+		},
+	"content_security_policy": "script-src 'self' https://www.google.com; object-src 'self'"
 	}
