@@ -165,8 +165,9 @@ h1 {
   font-size: 18px;
 }
 .review-count {
-  background-image: url(https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/cb6f6453c924/assets/img/stars/stars_map@2x.png);
-  height: 40px;
-  width: 220px;
+  background-image: url(https://s3-media4.fl.yelpcdn.com/assets/srv0/yelp_styleguide/c2252a4cd43e/assets/img/stars/stars_map.png);
+  background-repeat: no-repeat;
+  height: 22px;
+  width: 126px;
 }
 
