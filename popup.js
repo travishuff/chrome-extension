@@ -5,9 +5,10 @@ const clearButton = document.getElementById('clear-button')
 chrome.storage.sync.get('yelpObjs', (response) => {
   console.log(response);
   if (Object.keys(response).length !== 0) {
+    
     let bizCard = '';
-    response.yelpObjs.forEach(item => {
-      bizCard += '<div class="row">'
+    response.yelpObjs.forEach((item, index) => {
+      bizCard += '<div class="row" id="' + index + '">'
       bizCard += '<div class="col-pic">'
       bizCard += '<img class="img-card" src="' + item.imgUrl + '" />'
       bizCard += '</div>'
@@ -43,11 +44,12 @@ button.addEventListener('click', function () {
       // console.log(response.yelpObjects);
       // create card for each object in yelpObjs
       if (response) {
+        
         document.querySelector('#list').innerHTML = '';
         let bizCard = '';
 
         response.yelpObjects.forEach((item, index) => {
-          bizCard += '<div class="row">'
+          bizCard += '<div class="row" id="' + index + '">'
           bizCard += '<div class="col-pic">'
           bizCard += '<img class="img-card" src="' + item.imgUrl + '" />'
           bizCard += '</div>'
@@ -58,11 +60,17 @@ button.addEventListener('click', function () {
           bizCard += '<div>' + item.reviewCount + ' Ratings</div>'
           bizCard += '</div>'
           bizCard += '<div class="col-del-but">'
-          bizCard += '<button id="">Delete</button>'
+          bizCard += '<button id="deleter">Delete</button>'
           bizCard += '</div>'
           bizCard += '</div>'
         });
+
         document.querySelector('#list').innerHTML = bizCard;
+
+        let buttonDelete = document.querySelector('#deleter');
+        buttonDelete.onclick = function() {
+          document.getElementById('0').innerHTML = '';
+        };
 
       }
       else {
