@@ -1,7 +1,7 @@
 console.log('contentJS running');
 const STARS = 'chrome-extension://fcgcolkdcnjfmihjmojdfchebcddbokb/stars_map.png'
 $(document).ready( function() {
-  
+
   // get title
   const title = $('.biz-page-title').text().trim();
   console.log(title);
