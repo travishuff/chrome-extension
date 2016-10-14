@@ -20,5 +20,5 @@
 			"default_title": "Chrome Extension Title",
 			"default_popup": "popup.html"
 		},
-	"content_security_policy": "script-src 'self' https://www.google.com; object-src 'self'"
+	"content_security_policy": "script-src 'self'; object-src 'self'"
 	}

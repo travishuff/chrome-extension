@@ -88,7 +88,7 @@ button.addEventListener('click', function () {
           row.addEventListener('click', (event) => {
              if (event.target.id === 'deleter') {
               console.log('deleter clicked for row' + event.target.parentNode.parentNode.id)
-              let newYelpObjs = response.yelpObjs.slice();
+              let newYelpObjs = response.yelpObjects.slice();
               newYelpObjs.splice(Number(event.target.parentNode.parentNode.id), 1)
               console.log('new yelp objs', newYelpObjs);
               chrome.storage.sync.set({'yelpObjs': newYelpObjs});
