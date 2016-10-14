@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
-	"name": "Extension Name",
-	"description": "Extension Description",
+	"name": "YelpDay",
+	"description": "Planner for Yelp",
 	"version": "1.0",
 	"permissions": ["storage"],
 	"background": {
@@ -17,7 +17,7 @@
 	],
 	"browser_action": {
 			"default_icon": "icon.png",
-			"default_title": "Chrome Extension Title",
+			"default_title": "YelpDay",
 			"default_popup": "popup.html"
 		},
 	"content_security_policy": "script-src 'self'; object-src 'self'"
