@@ -1,1 +1,1 @@
-This is a starter folder for creating chrome extensions with 1 popup page.
+This is a Chrome extension for creating a planner for your day using Yelp.

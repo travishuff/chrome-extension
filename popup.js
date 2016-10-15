@@ -1,6 +1,7 @@
 console.log('ready');
-const button = document.getElementById('add-button')
-const clearButton = document.getElementById('clear-button')
+const button = document.getElementById('add-button');
+const clearButton = document.getElementById('clear-button');
+const distanceButton = document.getElementById('distance-button');
 
 chrome.storage.sync.get('yelpObjs', (response) => {
   console.log(response);
@@ -48,6 +49,14 @@ clearButton.addEventListener('click', function () {
   chrome.storage.sync.clear(() => console.log('cleared events'));
   document.querySelector('#list').innerHTML = '';
 })
+
+//  add distance to Yelp page
+distanceButton.addEventListener('click', function(tab) {
+  chrome.tabs.executeScript({
+    file: "insert.js"
+  });
+});
+
 // when button is clicked, run content script
 button.addEventListener('click', function () {
   // console.log('clicked');
